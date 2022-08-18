@@ -14,7 +14,8 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "name": "firestore-parser",
   "version": "1.0.0",
@@ -26,5 +27,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "firebase-admin": "^11.0.1"
   }
 }
