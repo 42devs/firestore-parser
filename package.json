@@ -36,7 +36,6 @@
     "email": "nicolas@42devs.cl"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/42devs",
     "access": "public"
   },
   "license": "MIT",
