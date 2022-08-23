@@ -1,7 +1,6 @@
 {
   "devDependencies": {
-    "@firebase/app-types": "0",
-    "@firebase/util": "1",
+    "@firebase/app-types": "^0.7.0",
     "@types/jest": "^28.1.7",
     "@types/node": "^18.7.6",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
@@ -47,7 +46,7 @@
     }
   },
   "dependencies": {
-    "@firebase/firestore-types": "^2.5.0"
+    "firebase-admin": "^11.0.1"
   },
   "directories": {
     "src": "src"

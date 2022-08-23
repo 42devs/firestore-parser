@@ -1,4 +1,4 @@
-import { DocumentReference, CollectionReference, DocumentData } from '@firebase/firestore-types';
+import { DocumentReference, CollectionReference, DocumentData } from 'firebase-admin/firestore';
 
 async function docRefArrayFromCollectionRef(collection: CollectionReference): Promise<Array<any>> {
   const insertArr: DocumentReference[] = [];
