@@ -1,10 +1,10 @@
-import { DocumentReference, CollectionReference, DocumentData } from 'firebase-admin/firestore';
+import { DocumentReference, CollectionReference, DocumentData } from '@firebase/firestore-types';
 
 async function docRefArrayFromCollectionRef(collection: CollectionReference): Promise<Array<any>> {
   const insertArr: DocumentReference[] = [];
   return collection.get()
-    .then((snapshot) => {
-      snapshot.forEach((element) => {
+    .then((snapshot: DocumentData) => {
+      snapshot.forEach((element: DocumentData) => {
         insertArr.push(element.ref);
       });
       return insertArr;
@@ -39,8 +39,8 @@ export default async function materialize(obj: DocumentData, depth: number = 5):
           const ref = objStruct[prop] as DocumentReference;
           const dataProm = ref
             .get()
-            .then((value) => value.data())
-            .then((data) => materialize(data!, depth - 1));
+            .then((value: DocumentData) => value.data())
+            .then((data: DocumentData) => materialize(data!, depth - 1));
           propToProm.push([prop, dataProm]);
           foundProp = true;
         } else if (objStruct[prop] instanceof Array
@@ -49,8 +49,8 @@ export default async function materialize(obj: DocumentData, depth: number = 5):
           const refArr = objStruct[prop] as Array<DocumentReference>;
           const groupProp = refArr.map((item) => item
             .get()
-            .then((val) => val.data())
-            .then((data) => materialize(data!, depth - 1)));
+            .then((val: DocumentData) => val.data())
+            .then((data: DocumentData) => materialize(data!, depth - 1)));
           propToProm.push([prop, Promise.all(groupProp)]);
           foundProp = true;
         } else if (isCollRef(objStruct[prop])) {
